@@ -1,17 +1,511 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Your Name - Portfolio</title>
-  </head>
-  <body>
-    <h1>Your Name</h1>
-    <p>Developer / Designer / Your Role</p>
-    <h2>Projects</h2>
-    <ul>
-      <li><a href="https://github.com/your-username/project-1">Project 1</a> – short description</li>
-    </ul>
-    <h2>Contact</h2>
-    <p><a href="mailto:you@email.com">you@email.com</a></p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Karan Ambasht | Lead Business Intelligence Analyst</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1120;
+      --bg-alt: #020617;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --tag-bg: #111827;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b, #020617);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 24px 28px;
+      margin-bottom: 32px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(59,130,246,0.12));
+      border: 1px solid rgba(148,163,184,0.5);
+      box-shadow: 0 22px 45px rgba(15,23,42,0.8);
+    }
+    .hero-text h1 {
+      font-size: 2.1rem;
+      margin-bottom: 4px;
+    }
+    .hero-title {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .hero-summary {
+      font-size: 0.95rem;
+      max-width: 520px;
+      color: #cbd5f5;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .badge {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.7);
+      color: #e5e7eb;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 220px;
+      align-items: flex-end;
+    }
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .hero-links a {
+      font-size: 0.8rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.6);
+      white-space: nowrap;
+    }
+    .hero-links a span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-right: 4px;
+    }
+    .location-phone {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 2.1fr 1.3fr;
+      gap: 24px;
+    }
+    section {
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .card {
+      background: rgba(15,23,42,0.95);
+      border-radius: 14px;
+      padding: 14px 16px 16px;
+      border: 1px solid rgba(31,41,55,0.95);
+      box-shadow: 0 16px 35px rgba(15,23,42,0.85);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      font-size: 0.85rem;
+    }
+    .skills-grid h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: #e5e7eb;
+    }
+
+    .exp-item {
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(30,64,175,0.4);
+    }
+    .exp-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .exp-role {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .exp-company {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .exp-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .exp-bullets {
+      margin-top: 6px;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+    .exp-bullets li {
+      margin-left: 16px;
+      margin-bottom: 4px;
+    }
+
+    .project {
+      margin-bottom: 10px;
+    }
+    .project:last-child { margin-bottom: 0; }
+    .project-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .project-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .project p {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+
+    .edu-item {
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .edu-item strong {
+      display: block;
+    }
+
+    .cert-list {
+      font-size: 0.82rem;
+      list-style: none;
+    }
+    .cert-list li {
+      margin-bottom: 4px;
+    }
+
+    .writing-list,
+    .contact-list {
+      font-size: 0.85rem;
+      list-style: none;
+    }
+    .writing-list li,
+    .contact-list li {
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-actions {
+        align-items: flex-start;
+      }
+      .hero-links {
+        justify-content: flex-start;
+      }
+      .location-phone {
+        text-align: left;
+      }
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="hero-text">
+        <h1>Karan Ambasht</h1>
+        <div class="hero-title">Lead Business Intelligence Analyst · Data & Analytics Leader</div>
+        <p class="hero-summary">
+          I design executive-ready analytics solutions that turn complex marketing, customer, and operational data 
+          into fast, high-confidence decisions. I specialize in dashboard strategy, data infrastructure, and 
+          cultivating data-driven cultures in large organizations.
+        </p>
+        <div class="hero-badges">
+          <span class="badge">Executive Dashboards</span>
+          <span class="badge">Marketing Analytics</span>
+          <span class="badge">Data Culture & Literacy</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <div class="hero-links">
+          <a href="mailto:karan.ambasht89@gmail.com"><span>Email</span>karan.ambasht89@gmail.com</a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://public.tableau.com" target="_blank" rel="noreferrer">Tableau Public</a>
+          <a href="https://github.com/karanambasht" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://medium.com" target="_blank" rel="noreferrer">Medium</a>
+          <a href="https://mentorship-link" target="_blank" rel="noreferrer">Mentorship</a>
+        </div>
+        <div class="location-phone">
+          Pittsburgh, PA · (412) 519-5141
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Left column: Experience + Projects -->
+      <div>
+        <section>
+          <h2>Experience</h2>
+          <div class="card">
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Lead Business Intelligence Analyst</div>
+                  <div class="exp-company">Highmark Health · Pittsburgh, USA</div>
+                </div>
+                <div class="exp-meta">Mar 2023 – Present</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Lead design and delivery of executive dashboards for Marketing leadership, shrinking report-to-decision time by 80% across campaign spend and revenue monitoring.</li>
+                <li>Partner with Marketing strategy on pre‑ and post‑campaign analytics for brand perception, competitiveness, and patient experience, cutting decision latency by 60%.</li>
+                <li>Engineer the data foundation that centralizes accurate, reusable campaign data so multiple teams can run analysis on a single trusted source.</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Data Culture Lead</div>
+                  <div class="exp-company">Motive Technologies, Inc. · Pittsburgh, USA</div>
+                </div>
+                <div class="exp-meta">May 2022 – Dec 2022</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Built executive Tableau dashboards and Snowflake infrastructure for customer success, driver safety, and financial planning, cutting insight‑to‑decision time by 40%.</li>
+                <li>Defined data advocacy and literacy guidelines that improved data accuracy, report generation, and decision‑making quality by 30%.</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Lead Data Analyst</div>
+                  <div class="exp-company">Highmark Health · Pittsburgh, USA</div>
+                </div>
+                <div class="exp-meta">Sep 2018 – May 2022</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Led stakeholder engagement and development of a Tableau CRM (Einstein Analytics) application for Commercial Sales, improving reporting and decision‑making by 30%.</li>
+                <li>Delivered two enterprise Tableau dashboards and Alteryx workflows for Cyber Security KPIs (36k users including CSO & CIO), cutting decision time by 60%.</li>
+                <li>Implemented and maintained eight Tableau dashboards for HR and Financial Systems, reducing report requests and generation time by 40%.</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Consultant</div>
+                  <div class="exp-company">Capgemini · Mumbai, India</div>
+                </div>
+                <div class="exp-meta">Nov 2015 – Apr 2017</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Created Tableau dashboards for real‑time e‑commerce web traffic, achieving a 50% reduction in report generation and analysis time.</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Software Engineer</div>
+                  <div class="exp-company">Tata Consultancy Services · Bengaluru, India</div>
+                </div>
+                <div class="exp-meta">Dec 2011 – Nov 2015</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Led a six‑member Agile team to implement 10 Business Process Testing modules, boosting business user efficiency by 30%.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Selected Work</h2>
+          <div class="card">
+            <!-- Replace these placeholders with actual GitHub/Tableau projects -->
+            <div class="project">
+              <div class="project-title">
+                Highmark Marketing Executive Dashboard Suite
+              </div>
+              <div class="project-meta">
+                Tableau · SQL · Data Engineering · Executive Reporting
+              </div>
+              <p>
+                Multi‑layered executive dashboards for tracking campaign performance, marketing spend, and revenue, underpinned by a centralized data infrastructure to support multiple marketing teams.
+              </p>
+            </div>
+
+            <div class="project">
+              <div class="project-title">
+                Motive Data Culture & Literacy Program
+              </div>
+              <div class="project-meta">
+                Data Literacy · Governance · Enablement
+              </div>
+              <p>
+                Designed and implemented the foundational data advocacy framework, including dashboard standards, training, and best practices that improved data quality and reporting efficiency across teams.
+              </p>
+            </div>
+
+            <div class="project">
+              <div class="project-title">
+                Enterprise Cyber Security KPI Dashboards
+              </div>
+              <div class="project-meta">
+                Tableau · Alteryx · Enterprise Analytics
+              </div>
+              <p>
+                Two enterprise dashboards and supporting workflows adopted by 36k+ users, surfacing Cyber Security KPIs to executives and operational teams with significant reductions in decision-making time.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right column: Skills, Education, Writing, Contact -->
+      <div>
+        <section>
+          <h2>Skills & Tools</h2>
+          <div class="card">
+            <div class="skills-grid">
+              <div>
+                <h3>Analytics & BI</h3>
+                <div class="tags">
+                  <span class="tag">Tableau Desktop</span>
+                  <span class="tag">Tableau Prep</span>
+                  <span class="tag">Power BI</span>
+                  <span class="tag">Dataiku</span>
+                  <span class="tag">Alteryx</span>
+                  <span class="tag">Salesforce Einstein Analytics</span>
+                </div>
+              </div>
+              <div>
+                <h3>Data Platforms</h3>
+                <div class="tags">
+                  <span class="tag">Microsoft SQL Server</span>
+                  <span class="tag">Snowflake</span>
+                  <span class="tag">Oracle</span>
+                  <span class="tag">Epic Clarity</span>
+                </div>
+              </div>
+              <div>
+                <h3>Languages</h3>
+                <div class="tags">
+                  <span class="tag">SQL</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">R</span>
+                </div>
+              </div>
+              <div>
+                <h3>Focus Areas</h3>
+                <div class="tags">
+                  <span class="tag">Executive Dashboards</span>
+                  <span class="tag">Marketing Analytics</span>
+                  <span class="tag">Data Strategy</span>
+                  <span class="tag">Data Literacy</span>
+                  <span class="tag">Stakeholder Enablement</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Education</h2>
+          <div class="card">
+            <div class="edu-item">
+              <strong>Master of Information Systems Management</strong>
+              Carnegie Mellon University · Pittsburgh, USA · May 2018<br />
+              <span class="muted">Database Management · Big Data & Data Science · Python for Developers</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Certifications</h2>
+          <div class="card">
+            <ul class="cert-list">
+              <li>Tableau Desktop Certified Professional (2021)</li>
+              <li>Alteryx Designer (2021)</li>
+              <li>Google Analytics GA3 (2018)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Writing & Mentorship</h2>
+          <div class="card">
+            <ul class="writing-list">
+              <li><a href="https://medium.com" target="_blank" rel="noreferrer">Medium: Analytics & data culture articles</a></li>
+              <li><a href="https://mentorship-link" target="_blank" rel="noreferrer">Mentorship: Supporting aspiring data professionals</a></li>
+              <li><a href="https://public.tableau.com" target="_blank" rel="noreferrer">Tableau Public: Portfolio of dashboards</a></li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+          <div class="card">
+            <ul class="contact-list">
+              <li>Email: <a href="mailto:karan.ambasht89@gmail.com">karan.ambasht89@gmail.com</a></li>
+              <li>GitHub: <a href="https://github.com/karanambasht">github.com/karanambasht</a></li>
+              <li>Location: Pittsburgh, PA · Open to remote or hybrid opportunities</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
 </html>
